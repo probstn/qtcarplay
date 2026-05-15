@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/QtCarplay">
+    <file alias="qmldir">/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/QtCarplay/qmldir</file>
+  </qresource>
+</RCC>
+

@@ -1,0 +1,474 @@
+[
+    {
+        "classes": [
+            {
+                "className": "CarplayController",
+                "lineNumber": 28,
+                "methods": [
+                    {
+                        "access": "public",
+                        "index": 9,
+                        "lineNumber": 60,
+                        "name": "verifyHardware",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "width",
+                                "type": "int"
+                            },
+                            {
+                                "name": "height",
+                                "type": "int"
+                            },
+                            {
+                                "name": "fps",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 10,
+                        "lineNumber": 61,
+                        "name": "startStream",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 11,
+                        "lineNumber": 62,
+                        "name": "stop",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "captureDirectory",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "fps",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 12,
+                        "lineNumber": 63,
+                        "name": "playCapture",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "x",
+                                "type": "double"
+                            },
+                            {
+                                "name": "y",
+                                "type": "double"
+                            }
+                        ],
+                        "index": 13,
+                        "lineNumber": 64,
+                        "name": "touchDown",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "x",
+                                "type": "double"
+                            },
+                            {
+                                "name": "y",
+                                "type": "double"
+                            }
+                        ],
+                        "index": 14,
+                        "lineNumber": 65,
+                        "name": "touchMove",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "x",
+                                "type": "double"
+                            },
+                            {
+                                "name": "y",
+                                "type": "double"
+                            }
+                        ],
+                        "index": 15,
+                        "lineNumber": 66,
+                        "name": "touchUp",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 31,
+                        "name": "status",
+                        "notify": "statusChanged",
+                        "override": false,
+                        "read": "status",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 32,
+                        "name": "dongleReady",
+                        "notify": "dongleReadyChanged",
+                        "override": false,
+                        "read": "dongleReady",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 33,
+                        "name": "streaming",
+                        "notify": "streamingChanged",
+                        "override": false,
+                        "read": "streaming",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 34,
+                        "name": "receivingVideo",
+                        "notify": "receivingVideoChanged",
+                        "override": false,
+                        "read": "receivingVideo",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 35,
+                        "name": "frameCount",
+                        "notify": "statsChanged",
+                        "override": false,
+                        "read": "frameCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 36,
+                        "name": "decodedFps",
+                        "notify": "statsChanged",
+                        "override": false,
+                        "read": "decodedFps",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 37,
+                        "name": "videoWidth",
+                        "notify": "videoGeometryChanged",
+                        "override": false,
+                        "read": "videoWidth",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 38,
+                        "name": "videoHeight",
+                        "notify": "videoGeometryChanged",
+                        "override": false,
+                        "read": "videoHeight",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 39,
+                        "name": "audioActive",
+                        "notify": "audioActiveChanged",
+                        "override": false,
+                        "read": "audioActive",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "lineNumber": 40,
+                        "name": "audioPacketCount",
+                        "notify": "audioStatsChanged",
+                        "override": false,
+                        "read": "audioPacketCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 10,
+                        "lineNumber": 41,
+                        "name": "videoSink",
+                        "notify": "videoSinkChanged",
+                        "override": false,
+                        "read": "videoSink",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVideoSink*",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setVideoSink"
+                    }
+                ],
+                "qualifiedClassName": "CarplayController",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 69,
+                        "name": "statusChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 70,
+                        "name": "dongleReadyChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 71,
+                        "name": "streamingChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 72,
+                        "name": "receivingVideoChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 73,
+                        "name": "statsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 74,
+                        "name": "videoGeometryChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 6,
+                        "lineNumber": 75,
+                        "name": "audioActiveChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 7,
+                        "lineNumber": 76,
+                        "name": "audioStatsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 8,
+                        "lineNumber": 77,
+                        "name": "videoSinkChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "CarplayController.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "PcmRingBuffer",
+                "lineNumber": 7,
+                "object": true,
+                "qualifiedClassName": "PcmRingBuffer",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QIODevice"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "PcmRingBuffer.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "UsbDongleTransport",
+                "lineNumber": 15,
+                "object": true,
+                "qualifiedClassName": "UsbDongleTransport",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "status",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 28,
+                        "name": "statusChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "ready",
+                                "type": "bool"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 29,
+                        "name": "dongleReadyChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "header",
+                                "type": "CarplayProtocol::Header"
+                            },
+                            {
+                                "name": "payload",
+                                "type": "QByteArray"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 30,
+                        "name": "messageReceived",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "reason",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 31,
+                        "name": "transportFailed",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QThread"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "UsbDongleTransport.h",
+        "outputRevision": 69
+    }
+]

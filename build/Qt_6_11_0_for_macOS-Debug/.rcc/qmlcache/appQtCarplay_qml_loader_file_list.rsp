@@ -1,0 +1,5 @@
+--resource
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/.qt/rcc/qmake_QtCarplay.qrc
+--resource
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/.qt/rcc/appQtCarplay_raw_qml_0.qrc
+/qt/qml/QtCarplay/Main.qml

@@ -1,0 +1,18 @@
+{
+    "classes": [
+        {
+            "className": "PcmRingBuffer",
+            "lineNumber": 7,
+            "object": true,
+            "qualifiedClassName": "PcmRingBuffer",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QIODevice"
+                }
+            ]
+        }
+    ],
+    "inputFile": "PcmRingBuffer.h",
+    "outputRevision": 69
+}

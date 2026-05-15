@@ -1,0 +1,14 @@
+-rootPath
+/Users/niklasprobst/Desktop/QtCarplay
+-cmake-output
+-output-file
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/.qt/qml_imports/appQtCarplay_build.cmake
+-importPath
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug
+-importPath
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/QtCarplay
+-importPath
+/Users/niklasprobst/Qt/6.11.0/macos/qml
+-qrcFiles
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/.qt/rcc/qmake_QtCarplay.qrc
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/.qt/rcc/appQtCarplay_raw_qml_0.qrc

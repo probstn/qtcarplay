@@ -1,0 +1,2 @@
+CMakeFiles/carplay_usb_probe_selftest.dir/carplay_usb_probe_selftest_autogen/mocs_compilation.cpp.o: \
+  /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/carplay_usb_probe_selftest_autogen/mocs_compilation.cpp

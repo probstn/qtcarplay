@@ -1,0 +1,6 @@
+set(__QT_DEPLOY_TARGET_appQtCarplay_FILE /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/appQtCarplay.app/Contents/MacOS/appQtCarplay)
+set(__QT_DEPLOY_TARGET_appQtCarplay_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_carplay_capture_selftest_FILE /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/carplay_capture_selftest)
+set(__QT_DEPLOY_TARGET_carplay_capture_selftest_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_carplay_usb_probe_selftest_FILE /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/carplay_usb_probe_selftest)
+set(__QT_DEPLOY_TARGET_carplay_usb_probe_selftest_TYPE EXECUTABLE)

@@ -1,0 +1,42 @@
+file(REMOVE_RECURSE
+  ".qt/rcc/qrc_appQtCarplay_raw_qml_0.cpp"
+  ".qt/rcc/qrc_qmake_QtCarplay.cpp"
+  "CMakeFiles/appQtCarplay_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/appQtCarplay_autogen.dir/ParseCache.txt"
+  "appQtCarplay_autogen"
+  "CMakeFiles/appQtCarplay.dir/appQtCarplay_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/appQtCarplay_autogen/mocs_compilation.cpp.o.d"
+  "CMakeFiles/appQtCarplay.dir/appqtcarplay_qmltyperegistrations.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/appqtcarplay_qmltyperegistrations.cpp.o.d"
+  "CMakeFiles/appQtCarplay.dir/build/Qt_6_11_0_for_macOS-Debug/.qt/rcc/qrc_appQtCarplay_raw_qml_0.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/build/Qt_6_11_0_for_macOS-Debug/.qt/rcc/qrc_appQtCarplay_raw_qml_0.cpp.o.d"
+  "CMakeFiles/appQtCarplay.dir/build/Qt_6_11_0_for_macOS-Debug/.qt/rcc/qrc_qmake_QtCarplay.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/build/Qt_6_11_0_for_macOS-Debug/.qt/rcc/qrc_qmake_QtCarplay.cpp.o.d"
+  "CMakeFiles/appQtCarplay.dir/main.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/main.cpp.o.d"
+  "CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o.d"
+  "CMakeFiles/appQtCarplay.dir/src/CarplayProtocol.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/src/CarplayProtocol.cpp.o.d"
+  "CMakeFiles/appQtCarplay.dir/src/H264Decoder.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/src/H264Decoder.cpp.o.d"
+  "CMakeFiles/appQtCarplay.dir/src/PcmRingBuffer.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/src/PcmRingBuffer.cpp.o.d"
+  "CMakeFiles/appQtCarplay.dir/src/UsbDongleTransport.cpp.o"
+  "CMakeFiles/appQtCarplay.dir/src/UsbDongleTransport.cpp.o.d"
+  "QtCarplay/appQtCarplay.qmltypes"
+  "appQtCarplay.app/Contents/MacOS/appQtCarplay"
+  "appQtCarplay.pdb"
+  "appQtCarplay_autogen/mocs_compilation.cpp"
+  "appQtCarplay_autogen/timestamp"
+  "appqtcarplay_qmltyperegistrations.cpp"
+  "meta_types/appQtCarplay_json_file_list.txt"
+  "meta_types/appQtCarplay_json_file_list.txt.timestamp"
+  "meta_types/qt6appqtcarplay_metatypes.json"
+  "meta_types/qt6appqtcarplay_metatypes.json.gen"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/appQtCarplay.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
