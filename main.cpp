@@ -6,7 +6,6 @@
 
 int main(int argc, char *argv[])
 {
-    qputenv("QT_MEDIA_BACKEND", "ffmpeg");
     qputenv("QSG_RENDER_LOOP", "threaded");
     if (!qEnvironmentVariableIsSet("QTCARPLAY_HW_DECODE"))
         qputenv("QTCARPLAY_HW_DECODE", "0");

@@ -122,6 +122,14 @@ if ! host_prefix_ready; then
 fi
 
 cmake -S "${src_dir}" -B "${target_build}" -G Ninja \
+    -UQT_FEATURE_alsa \
+    -UQT_FEATURE_pulseaudio \
+    -UQT_FEATURE_ffmpeg \
+    -UQT_FEATURE_ffmpeg_stubs \
+    -UFEATURE_alsa \
+    -UFEATURE_pulseaudio \
+    -UFEATURE_ffmpeg \
+    -UFEATURE_ffmpeg_stubs \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON \
     -DCMAKE_TOOLCHAIN_FILE=/work/cmake/rpi-aarch64-toolchain.cmake \
@@ -130,6 +138,7 @@ cmake -S "${src_dir}" -B "${target_build}" -G Ninja \
     -DQT_HOST_PATH="${RPI_QT_HOST}" \
     -DQT_BUILD_EXAMPLES=OFF \
     -DQT_BUILD_TESTS=OFF \
+    -DQT_NO_FEATURE_AUTO_RESET=ON \
     -DQT_BUILD_SUBMODULES="qtbase;qtshadertools;qtdeclarative;qtmultimedia" \
     -DBUILD_qtquick3d=OFF \
     -DINPUT_opengl=es2 \
@@ -139,6 +148,9 @@ cmake -S "${src_dir}" -B "${target_build}" -G Ninja \
     -DQT_FEATURE_eglfs=ON \
     -DQT_FEATURE_eglfs_kms=ON \
     -DQT_FEATURE_linuxfb=ON \
+    -DFEATURE_alsa=ON \
+    -DFEATURE_pulseaudio=OFF \
+    -DFEATURE_ffmpeg=OFF \
     -DQT_FEATURE_spatialaudio_quick3d=OFF
 
 cmake --build "${target_build}" --parallel "${QT_BUILD_PARALLEL}"

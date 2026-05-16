@@ -6,6 +6,7 @@
 
 #include <QAudioDevice>
 #include <QCoreApplication>
+#include <QDebug>
 #include <QDir>
 #include <QElapsedTimer>
 #include <QFileInfoList>
@@ -81,6 +82,28 @@ QAudioFormat audioFormatForDecodeType(int decodeType)
     }
 
     return format;
+}
+
+QAudioDevice selectedAudioOutput()
+{
+    const QList<QAudioDevice> outputs = QMediaDevices::audioOutputs();
+    const QString requested = qEnvironmentVariable("QTCARPLAY_AUDIO_OUTPUT_ID");
+
+    if (!requested.isEmpty()) {
+        for (const QAudioDevice &output : outputs) {
+            if (QString::fromUtf8(output.id()) == requested || output.description().contains(requested, Qt::CaseInsensitive))
+                return output;
+        }
+
+        qWarning().noquote() << "Requested audio output not found:" << requested;
+        for (const QAudioDevice &output : outputs) {
+            qWarning().noquote() << "Available audio output:"
+                                 << output.description()
+                                 << "id=" << QString::fromUtf8(output.id());
+        }
+    }
+
+    return QMediaDevices::defaultAudioOutput();
 }
 
 } // namespace
@@ -285,6 +308,7 @@ void CarplayController::setStatus(const QString &status)
             return;
         m_status = status;
     }
+    qInfo().noquote() << "CarPlay status:" << status;
     emit statusChanged();
 }
 
@@ -718,16 +742,28 @@ void CarplayController::writeAudio(int decodeType, int audioType, float volume, 
     auto it = m_audioStreams.find(key);
     if (it == m_audioStreams.end()) {
         const QAudioFormat format = audioFormatForDecodeType(decodeType);
-        const QAudioDevice output = QMediaDevices::defaultAudioOutput();
+        const QAudioDevice output = selectedAudioOutput();
         if (output.isNull()) {
             setStatus(QStringLiteral("No audio output device"));
             return;
         }
+        qInfo().noquote() << "CarPlay audio output:"
+                          << output.description()
+                          << "id=" << QString::fromUtf8(output.id())
+                          << "decodeType=" << decodeType
+                          << "audioType=" << audioType
+                          << "format=" << QString("%1 Hz/%2 ch/%3 bytes")
+                                           .arg(format.sampleRate())
+                                           .arg(format.channelCount())
+                                           .arg(format.bytesPerFrame());
 
         AudioStream stream;
         const int bytesPerSecond = format.bytesPerFrame() * format.sampleRate();
         stream.buffer = new PcmRingBuffer(bytesPerSecond / 5, this);
         stream.sink = new QAudioSink(output, format, this);
+        connect(stream.sink, &QAudioSink::stateChanged, this, [sink = stream.sink](QAudio::State state) {
+            qInfo() << "CarPlay audio sink state:" << state << "error:" << sink->error();
+        });
         stream.sink->setBufferSize(bytesPerSecond / 12);
         stream.sink->start(stream.buffer);
 

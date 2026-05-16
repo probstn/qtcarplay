@@ -117,7 +117,18 @@ target_link_libraries(carplay_controller_probe
         PkgConfig::FFMPEG
 )
 
+add_executable(carplay_audio_selftest
+    tools/audio_selftest.cpp
+)
+
+target_link_libraries(carplay_audio_selftest
+    PRIVATE
+        Qt6::Core
+        Qt6::Multimedia
+)
+
 install(TARGETS
+    carplay_audio_selftest
     carplay_capture_selftest
     carplay_usb_probe_selftest
     carplay_session_probe

@@ -31,6 +31,7 @@ export PATH="\${QT_ROOT}/bin:\${PATH}"
 export QML_IMPORT_PATH="\${QT_ROOT}/qml"
 export QT_PLUGIN_PATH="\${QT_ROOT}/plugins"
 export QT_QPA_FONTDIR="\${QT_QPA_FONTDIR:-/usr/share/fonts/truetype/dejavu}"
+export QTCARPLAY_AUDIO_OUTPUT_ID="\${QTCARPLAY_AUDIO_OUTPUT_ID:-plughw:CARD=vc4hdmi0,DEV=0}"
 export QT_QPA_PLATFORM="\${QT_QPA_PLATFORM:-eglfs}"
 export QT_QPA_EGLFS_INTEGRATION="\${QT_QPA_EGLFS_INTEGRATION:-eglfs_kms}"
 
@@ -59,3 +60,17 @@ ssh "${RPI_SSH}" "sudo tee /etc/udev/rules.d/99-qtcarplay-dongle.rules >/dev/nul
 SUBSYSTEM=="usb", ATTR{idVendor}=="1314", ATTR{idProduct}=="1520", MODE="0660", GROUP="plugdev", TAG+="uaccess"
 SUBSYSTEM=="usb", ATTR{idVendor}=="1314", ATTR{idProduct}=="1521", MODE="0660", GROUP="plugdev", TAG+="uaccess"
 REMOTE
+
+ssh "${RPI_SSH}" "sudo tee '${RPI_APP_PREFIX}/asound.conf' >/dev/null" <<'REMOTE'
+pcm.!default {
+    type plug
+    slave.pcm "hw:1,0"
+}
+
+ctl.!default {
+    type hw
+    card 1
+}
+REMOTE
+
+ssh "${RPI_SSH}" "sudo install -o '${RPI_USER}' -g '${RPI_USER}' -m 0644 '${RPI_APP_PREFIX}/asound.conf' '/home/${RPI_USER}/.asoundrc'"
