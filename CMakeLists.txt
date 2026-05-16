@@ -2,13 +2,15 @@ cmake_minimum_required(VERSION 3.16)
 
 project(QtCarplay VERSION 0.1 LANGUAGES CXX)
 
+include(GNUInstallDirs)
+
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick Multimedia)
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(LIBUSB REQUIRED libusb-1.0)
-pkg_check_modules(FFMPEG REQUIRED libavcodec libavutil libswscale)
+pkg_check_modules(LIBUSB REQUIRED IMPORTED_TARGET libusb-1.0)
+pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET libavcodec libavutil libswscale)
 
 qt_standard_project_setup(REQUIRES 6.10)
 
@@ -48,20 +50,8 @@ target_link_libraries(appQtCarplay
     PRIVATE
         Qt6::Quick
         Qt6::Multimedia
-        ${LIBUSB_LIBRARIES}
-        ${FFMPEG_LIBRARIES}
-)
-
-target_include_directories(appQtCarplay
-    PRIVATE
-        ${LIBUSB_INCLUDE_DIRS}
-        ${FFMPEG_INCLUDE_DIRS}
-)
-
-target_link_directories(appQtCarplay
-    PRIVATE
-        ${LIBUSB_LIBRARY_DIRS}
-        ${FFMPEG_LIBRARY_DIRS}
+        PkgConfig::LIBUSB
+        PkgConfig::FFMPEG
 )
 
 install(TARGETS appQtCarplay
@@ -76,39 +66,19 @@ add_executable(carplay_capture_selftest
     src/H264Decoder.h
 )
 
-target_include_directories(carplay_capture_selftest
-    PRIVATE
-        ${FFMPEG_INCLUDE_DIRS}
-)
-
-target_link_directories(carplay_capture_selftest
-    PRIVATE
-        ${FFMPEG_LIBRARY_DIRS}
-)
-
 target_link_libraries(carplay_capture_selftest
     PRIVATE
         Qt6::Multimedia
-        ${FFMPEG_LIBRARIES}
+        PkgConfig::FFMPEG
 )
 
 add_executable(carplay_usb_probe_selftest
     tools/usb_probe_selftest.cpp
 )
 
-target_include_directories(carplay_usb_probe_selftest
-    PRIVATE
-        ${LIBUSB_INCLUDE_DIRS}
-)
-
-target_link_directories(carplay_usb_probe_selftest
-    PRIVATE
-        ${LIBUSB_LIBRARY_DIRS}
-)
-
 target_link_libraries(carplay_usb_probe_selftest
     PRIVATE
-        ${LIBUSB_LIBRARIES}
+        PkgConfig::LIBUSB
 )
 
 add_executable(carplay_session_probe
@@ -119,20 +89,10 @@ add_executable(carplay_session_probe
     src/UsbDongleTransport.h
 )
 
-target_include_directories(carplay_session_probe
-    PRIVATE
-        ${LIBUSB_INCLUDE_DIRS}
-)
-
-target_link_directories(carplay_session_probe
-    PRIVATE
-        ${LIBUSB_LIBRARY_DIRS}
-)
-
 target_link_libraries(carplay_session_probe
     PRIVATE
         Qt6::Core
-        ${LIBUSB_LIBRARIES}
+        PkgConfig::LIBUSB
 )
 
 add_executable(carplay_controller_probe
@@ -149,22 +109,18 @@ add_executable(carplay_controller_probe
     src/UsbDongleTransport.h
 )
 
-target_include_directories(carplay_controller_probe
-    PRIVATE
-        ${LIBUSB_INCLUDE_DIRS}
-        ${FFMPEG_INCLUDE_DIRS}
-)
-
-target_link_directories(carplay_controller_probe
-    PRIVATE
-        ${LIBUSB_LIBRARY_DIRS}
-        ${FFMPEG_LIBRARY_DIRS}
-)
-
 target_link_libraries(carplay_controller_probe
     PRIVATE
         Qt6::Core
         Qt6::Multimedia
-        ${LIBUSB_LIBRARIES}
-        ${FFMPEG_LIBRARIES}
+        PkgConfig::LIBUSB
+        PkgConfig::FFMPEG
+)
+
+install(TARGETS
+    carplay_capture_selftest
+    carplay_usb_probe_selftest
+    carplay_session_probe
+    carplay_controller_probe
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

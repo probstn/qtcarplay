@@ -1512,8 +1512,8 @@ Vulkan_INCLUDE_DIR-ADVANCED:INTERNAL=1
 Vulkan_LIBRARY-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
-__pkg_config_arguments_FFMPEG:INTERNAL=REQUIRED;libavcodec;libavutil;libswscale
-__pkg_config_arguments_LIBUSB:INTERNAL=REQUIRED;libusb-1.0
+__pkg_config_arguments_FFMPEG:INTERNAL=REQUIRED;IMPORTED_TARGET;libavcodec;libavutil;libswscale
+__pkg_config_arguments_LIBUSB:INTERNAL=REQUIRED;IMPORTED_TARGET;libusb-1.0
 __pkg_config_checked_FFMPEG:INTERNAL=1
 __pkg_config_checked_LIBUSB:INTERNAL=1
 __qt_qml_macros_module_base_dir:INTERNAL=/opt/homebrew/lib/cmake/Qt6Qml

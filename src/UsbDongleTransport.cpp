@@ -109,7 +109,9 @@ void UsbDongleTransport::initializeUsb()
         throw std::runtime_error("CarPlay dongle not found");
 
     emit statusChanged(QStringLiteral("Resetting dongle"));
-    requireUsb(libusb_reset_device(m_handle), QStringLiteral("libusb_reset_device"));
+    const int resetResult = libusb_reset_device(m_handle);
+    if (resetResult != LIBUSB_SUCCESS && resetResult != LIBUSB_ERROR_NOT_FOUND)
+        requireUsb(resetResult, QStringLiteral("libusb_reset_device"));
     libusb_close(m_handle);
     m_handle = nullptr;
 

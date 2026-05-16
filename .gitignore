@@ -1,2 +1,4 @@
 react-carplay/
 carplay/
+.rpi-sdk/
+build-rpi/
