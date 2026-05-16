@@ -1,0 +1,27 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  )
+
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "" "carplay_session_probe_autogen/timestamp" "custom" "carplay_session_probe_autogen/deps"
+  "/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/carplay_session_probe_autogen/mocs_compilation.cpp" "CMakeFiles/carplay_session_probe.dir/carplay_session_probe_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/carplay_session_probe.dir/carplay_session_probe_autogen/mocs_compilation.cpp.o.d"
+  "/Users/niklasprobst/Desktop/QtCarplay/src/CarplayProtocol.cpp" "CMakeFiles/carplay_session_probe.dir/src/CarplayProtocol.cpp.o" "gcc" "CMakeFiles/carplay_session_probe.dir/src/CarplayProtocol.cpp.o.d"
+  "/Users/niklasprobst/Desktop/QtCarplay/src/UsbDongleTransport.cpp" "CMakeFiles/carplay_session_probe.dir/src/UsbDongleTransport.cpp.o" "gcc" "CMakeFiles/carplay_session_probe.dir/src/UsbDongleTransport.cpp.o.d"
+  "/Users/niklasprobst/Desktop/QtCarplay/tools/session_probe.cpp" "CMakeFiles/carplay_session_probe.dir/tools/session_probe.cpp.o" "gcc" "CMakeFiles/carplay_session_probe.dir/tools/session_probe.cpp.o.d"
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

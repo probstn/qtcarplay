@@ -3,12 +3,12 @@
         "classes": [
             {
                 "className": "CarplayController",
-                "lineNumber": 28,
+                "lineNumber": 30,
                 "methods": [
                     {
                         "access": "public",
                         "index": 9,
-                        "lineNumber": 60,
+                        "lineNumber": 62,
                         "name": "verifyHardware",
                         "returnType": "void"
                     },
@@ -29,14 +29,14 @@
                             }
                         ],
                         "index": 10,
-                        "lineNumber": 61,
+                        "lineNumber": 63,
                         "name": "startStream",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 11,
-                        "lineNumber": 62,
+                        "lineNumber": 64,
                         "name": "stop",
                         "returnType": "void"
                     },
@@ -53,7 +53,7 @@
                             }
                         ],
                         "index": 12,
-                        "lineNumber": 63,
+                        "lineNumber": 65,
                         "name": "playCapture",
                         "returnType": "void"
                     },
@@ -70,7 +70,7 @@
                             }
                         ],
                         "index": 13,
-                        "lineNumber": 64,
+                        "lineNumber": 66,
                         "name": "touchDown",
                         "returnType": "void"
                     },
@@ -87,7 +87,7 @@
                             }
                         ],
                         "index": 14,
-                        "lineNumber": 65,
+                        "lineNumber": 67,
                         "name": "touchMove",
                         "returnType": "void"
                     },
@@ -104,7 +104,7 @@
                             }
                         ],
                         "index": 15,
-                        "lineNumber": 66,
+                        "lineNumber": 68,
                         "name": "touchUp",
                         "returnType": "void"
                     }
@@ -116,7 +116,7 @@
                         "designable": true,
                         "final": false,
                         "index": 0,
-                        "lineNumber": 31,
+                        "lineNumber": 33,
                         "name": "status",
                         "notify": "statusChanged",
                         "override": false,
@@ -133,7 +133,7 @@
                         "designable": true,
                         "final": false,
                         "index": 1,
-                        "lineNumber": 32,
+                        "lineNumber": 34,
                         "name": "dongleReady",
                         "notify": "dongleReadyChanged",
                         "override": false,
@@ -150,7 +150,7 @@
                         "designable": true,
                         "final": false,
                         "index": 2,
-                        "lineNumber": 33,
+                        "lineNumber": 35,
                         "name": "streaming",
                         "notify": "streamingChanged",
                         "override": false,
@@ -167,7 +167,7 @@
                         "designable": true,
                         "final": false,
                         "index": 3,
-                        "lineNumber": 34,
+                        "lineNumber": 36,
                         "name": "receivingVideo",
                         "notify": "receivingVideoChanged",
                         "override": false,
@@ -184,7 +184,7 @@
                         "designable": true,
                         "final": false,
                         "index": 4,
-                        "lineNumber": 35,
+                        "lineNumber": 37,
                         "name": "frameCount",
                         "notify": "statsChanged",
                         "override": false,
@@ -201,7 +201,7 @@
                         "designable": true,
                         "final": false,
                         "index": 5,
-                        "lineNumber": 36,
+                        "lineNumber": 38,
                         "name": "decodedFps",
                         "notify": "statsChanged",
                         "override": false,
@@ -218,7 +218,7 @@
                         "designable": true,
                         "final": false,
                         "index": 6,
-                        "lineNumber": 37,
+                        "lineNumber": 39,
                         "name": "videoWidth",
                         "notify": "videoGeometryChanged",
                         "override": false,
@@ -235,7 +235,7 @@
                         "designable": true,
                         "final": false,
                         "index": 7,
-                        "lineNumber": 38,
+                        "lineNumber": 40,
                         "name": "videoHeight",
                         "notify": "videoGeometryChanged",
                         "override": false,
@@ -252,7 +252,7 @@
                         "designable": true,
                         "final": false,
                         "index": 8,
-                        "lineNumber": 39,
+                        "lineNumber": 41,
                         "name": "audioActive",
                         "notify": "audioActiveChanged",
                         "override": false,
@@ -269,7 +269,7 @@
                         "designable": true,
                         "final": false,
                         "index": 9,
-                        "lineNumber": 40,
+                        "lineNumber": 42,
                         "name": "audioPacketCount",
                         "notify": "audioStatsChanged",
                         "override": false,
@@ -286,7 +286,7 @@
                         "designable": true,
                         "final": false,
                         "index": 10,
-                        "lineNumber": 41,
+                        "lineNumber": 43,
                         "name": "videoSink",
                         "notify": "videoSinkChanged",
                         "override": false,
@@ -305,63 +305,63 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 69,
+                        "lineNumber": 71,
                         "name": "statusChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 70,
+                        "lineNumber": 72,
                         "name": "dongleReadyChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 2,
-                        "lineNumber": 71,
+                        "lineNumber": 73,
                         "name": "streamingChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 3,
-                        "lineNumber": 72,
+                        "lineNumber": 74,
                         "name": "receivingVideoChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 4,
-                        "lineNumber": 73,
+                        "lineNumber": 75,
                         "name": "statsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 5,
-                        "lineNumber": 74,
+                        "lineNumber": 76,
                         "name": "videoGeometryChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 6,
-                        "lineNumber": 75,
+                        "lineNumber": 77,
                         "name": "audioActiveChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 7,
-                        "lineNumber": 76,
+                        "lineNumber": 78,
                         "name": "audioStatsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 8,
-                        "lineNumber": 77,
+                        "lineNumber": 79,
                         "name": "videoSinkChanged",
                         "returnType": "void"
                     }

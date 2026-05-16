@@ -1036,6 +1036,8 @@ CMakeFiles/appQtCarplay.dir/main.cpp.o: \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qaudio.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/QAudioSource \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qaudiosource.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QElapsedTimer \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QHash \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QIODevice \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QObject \

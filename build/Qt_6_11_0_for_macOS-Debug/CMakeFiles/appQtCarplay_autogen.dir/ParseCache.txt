@@ -2569,6 +2569,7 @@
  mdp:/Users/niklasprobst/Desktop/QtCarplay/src/CarplayController.h
  mdp:/Users/niklasprobst/Desktop/QtCarplay/src/CarplayProtocol.h
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QByteArray
+ mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QElapsedTimer
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QHash
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QIODevice
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QJsonObject
@@ -2619,6 +2620,7 @@
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/qdatastream.h
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/qdatetime.h
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/qdebug.h
+ mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/qelapsedtimer.h
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/qendian.h
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/qexceptionhandling.h
  mdp:/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/qflags.h

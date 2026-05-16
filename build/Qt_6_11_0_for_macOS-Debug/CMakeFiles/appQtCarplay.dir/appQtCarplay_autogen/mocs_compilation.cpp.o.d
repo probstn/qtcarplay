@@ -987,6 +987,8 @@ CMakeFiles/appQtCarplay.dir/appQtCarplay_autogen/mocs_compilation.cpp.o: \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qaudio.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/QAudioSource \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qaudiosource.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QElapsedTimer \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QHash \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QIODevice \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QObject \
@@ -1054,8 +1056,6 @@ CMakeFiles/appQtCarplay.dir/appQtCarplay_autogen/mocs_compilation.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include/sanitizer/tsan_interface.h \
   /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/appQtCarplay_autogen/UVLADIE3JM/moc_UsbDongleTransport.cpp \
   /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/appQtCarplay_autogen/UVLADIE3JM/../../../../src/UsbDongleTransport.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QElapsedTimer \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QThread \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qthread.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/c++/v1/future

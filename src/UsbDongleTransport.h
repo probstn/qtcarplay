@@ -36,11 +36,14 @@ protected:
 private:
     void initializeUsb();
     void closeUsb();
+    bool openKnownDevice();
     void findEndpoints();
     bool readExact(char *data, qsizetype size, unsigned int timeoutMs);
+    bool readNextHeader(CarplayProtocol::Header &header);
     void sendStartup();
     void pollLoop();
     void sendHeartbeatIfDue(QElapsedTimer &timer, qint64 &lastHeartbeatMs);
+    void sendPairIfDue(QElapsedTimer &timer, qint64 startMs, bool phoneSeen, bool &pairSent);
 
     CarplayProtocol::DongleConfig m_config;
     libusb_context *m_context = nullptr;

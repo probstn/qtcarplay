@@ -10,7 +10,8 @@ namespace CarplayProtocol {
 
 constexpr quint32 Sync = 0x55aa55aa;
 constexpr quint16 VendorId = 0x1314;
-constexpr quint16 ProductId = 0x1521;
+constexpr quint16 ProductIdCpc200Ccpa = 0x1520;
+constexpr quint16 ProductIdCpc200Ccpm = 0x1521;
 constexpr qsizetype HeaderSize = 16;
 
 enum class MessageType : quint32 {
@@ -122,6 +123,11 @@ struct AudioPacket {
     QByteArray pcm;
 };
 
+struct PluggedPacket {
+    int phoneType = 0;
+    std::optional<int> wifi;
+};
+
 QByteArray makeMessage(MessageType type, const QByteArray &payload = {});
 std::optional<Header> parseHeader(const QByteArray &header);
 
@@ -136,6 +142,7 @@ QByteArray makeFileString(const QString &path, const QString &value);
 
 VideoPacket parseVideoPacket(const QByteArray &payload);
 AudioPacket parseAudioPacket(const QByteArray &payload);
+PluggedPacket parsePluggedPacket(const QByteArray &payload);
 int parseCommand(const QByteArray &payload);
 
 QList<QByteArray> makeStartupMessages(const DongleConfig &config);

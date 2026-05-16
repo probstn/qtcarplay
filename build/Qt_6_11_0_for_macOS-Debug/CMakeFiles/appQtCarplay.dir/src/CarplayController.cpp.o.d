@@ -986,6 +986,8 @@ CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o: \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qaudio.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/QAudioSource \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qaudiosource.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QElapsedTimer \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QHash \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QIODevice \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QObject \
@@ -1042,8 +1044,6 @@ CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/c++/v1/print \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/unistd.h \
   /Users/niklasprobst/Desktop/QtCarplay/src/H264Decoder.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QElapsedTimer \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
   /opt/homebrew/Cellar/ffmpeg/7.1.1_3/include/libavcodec/avcodec.h \
   /opt/homebrew/Cellar/ffmpeg/7.1.1_3/include/libavutil/samplefmt.h \
   /opt/homebrew/Cellar/ffmpeg/7.1.1_3/include/libavutil/attributes.h \
@@ -1128,4 +1128,6 @@ CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o: \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/QMediaDevices \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qmediadevices.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QMetaObject \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QTimer \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtimer.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/c++/v1/fstream

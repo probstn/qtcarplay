@@ -201,6 +201,18 @@ AudioPacket parseAudioPacket(const QByteArray &payload)
     return packet;
 }
 
+PluggedPacket parsePluggedPacket(const QByteArray &payload)
+{
+    if (payload.size() < 4)
+        throw std::runtime_error("Plugged packet too short");
+
+    PluggedPacket packet;
+    packet.phoneType = static_cast<int>(readU32(payload, 0));
+    if (payload.size() >= 8)
+        packet.wifi = static_cast<int>(readU32(payload, 4));
+    return packet;
+}
+
 int parseCommand(const QByteArray &payload)
 {
     if (payload.size() < 4)

@@ -357,6 +357,32 @@ carplay_usb_probe_selftest/fast:
 .PHONY : carplay_usb_probe_selftest/fast
 
 #=============================================================================
+# Target rules for targets named carplay_session_probe
+
+# Build rule for target.
+carplay_session_probe: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 carplay_session_probe
+.PHONY : carplay_session_probe
+
+# fast build rule for target.
+carplay_session_probe/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/build
+.PHONY : carplay_session_probe/fast
+
+#=============================================================================
+# Target rules for targets named carplay_controller_probe
+
+# Build rule for target.
+carplay_controller_probe: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 carplay_controller_probe
+.PHONY : carplay_controller_probe
+
+# fast build rule for target.
+carplay_controller_probe/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/build
+.PHONY : carplay_controller_probe/fast
+
+#=============================================================================
 # Target rules for targets named generate_qmlls_build_ini_file
 
 # Build rule for target.
@@ -472,6 +498,58 @@ carplay_usb_probe_selftest_autogen: cmake_check_build_system
 carplay_usb_probe_selftest_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_usb_probe_selftest_autogen.dir/build.make CMakeFiles/carplay_usb_probe_selftest_autogen.dir/build
 .PHONY : carplay_usb_probe_selftest_autogen/fast
+
+#=============================================================================
+# Target rules for targets named carplay_session_probe_autogen_timestamp_deps
+
+# Build rule for target.
+carplay_session_probe_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 carplay_session_probe_autogen_timestamp_deps
+.PHONY : carplay_session_probe_autogen_timestamp_deps
+
+# fast build rule for target.
+carplay_session_probe_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe_autogen_timestamp_deps.dir/build.make CMakeFiles/carplay_session_probe_autogen_timestamp_deps.dir/build
+.PHONY : carplay_session_probe_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named carplay_session_probe_autogen
+
+# Build rule for target.
+carplay_session_probe_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 carplay_session_probe_autogen
+.PHONY : carplay_session_probe_autogen
+
+# fast build rule for target.
+carplay_session_probe_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe_autogen.dir/build.make CMakeFiles/carplay_session_probe_autogen.dir/build
+.PHONY : carplay_session_probe_autogen/fast
+
+#=============================================================================
+# Target rules for targets named carplay_controller_probe_autogen_timestamp_deps
+
+# Build rule for target.
+carplay_controller_probe_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 carplay_controller_probe_autogen_timestamp_deps
+.PHONY : carplay_controller_probe_autogen_timestamp_deps
+
+# fast build rule for target.
+carplay_controller_probe_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe_autogen_timestamp_deps.dir/build.make CMakeFiles/carplay_controller_probe_autogen_timestamp_deps.dir/build
+.PHONY : carplay_controller_probe_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named carplay_controller_probe_autogen
+
+# Build rule for target.
+carplay_controller_probe_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 carplay_controller_probe_autogen
+.PHONY : carplay_controller_probe_autogen
+
+# fast build rule for target.
+carplay_controller_probe_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe_autogen.dir/build.make CMakeFiles/carplay_controller_probe_autogen.dir/build
+.PHONY : carplay_controller_probe_autogen/fast
 
 appQtCarplay_autogen/mocs_compilation.o: appQtCarplay_autogen/mocs_compilation.cpp.o
 .PHONY : appQtCarplay_autogen/mocs_compilation.o
@@ -593,6 +671,54 @@ carplay_capture_selftest_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_capture_selftest.dir/build.make CMakeFiles/carplay_capture_selftest.dir/carplay_capture_selftest_autogen/mocs_compilation.cpp.s
 .PHONY : carplay_capture_selftest_autogen/mocs_compilation.cpp.s
 
+carplay_controller_probe_autogen/mocs_compilation.o: carplay_controller_probe_autogen/mocs_compilation.cpp.o
+.PHONY : carplay_controller_probe_autogen/mocs_compilation.o
+
+# target to build an object file
+carplay_controller_probe_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/carplay_controller_probe_autogen/mocs_compilation.cpp.o
+.PHONY : carplay_controller_probe_autogen/mocs_compilation.cpp.o
+
+carplay_controller_probe_autogen/mocs_compilation.i: carplay_controller_probe_autogen/mocs_compilation.cpp.i
+.PHONY : carplay_controller_probe_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+carplay_controller_probe_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/carplay_controller_probe_autogen/mocs_compilation.cpp.i
+.PHONY : carplay_controller_probe_autogen/mocs_compilation.cpp.i
+
+carplay_controller_probe_autogen/mocs_compilation.s: carplay_controller_probe_autogen/mocs_compilation.cpp.s
+.PHONY : carplay_controller_probe_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+carplay_controller_probe_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/carplay_controller_probe_autogen/mocs_compilation.cpp.s
+.PHONY : carplay_controller_probe_autogen/mocs_compilation.cpp.s
+
+carplay_session_probe_autogen/mocs_compilation.o: carplay_session_probe_autogen/mocs_compilation.cpp.o
+.PHONY : carplay_session_probe_autogen/mocs_compilation.o
+
+# target to build an object file
+carplay_session_probe_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/carplay_session_probe_autogen/mocs_compilation.cpp.o
+.PHONY : carplay_session_probe_autogen/mocs_compilation.cpp.o
+
+carplay_session_probe_autogen/mocs_compilation.i: carplay_session_probe_autogen/mocs_compilation.cpp.i
+.PHONY : carplay_session_probe_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+carplay_session_probe_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/carplay_session_probe_autogen/mocs_compilation.cpp.i
+.PHONY : carplay_session_probe_autogen/mocs_compilation.cpp.i
+
+carplay_session_probe_autogen/mocs_compilation.s: carplay_session_probe_autogen/mocs_compilation.cpp.s
+.PHONY : carplay_session_probe_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+carplay_session_probe_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/carplay_session_probe_autogen/mocs_compilation.cpp.s
+.PHONY : carplay_session_probe_autogen/mocs_compilation.cpp.s
+
 carplay_usb_probe_selftest_autogen/mocs_compilation.o: carplay_usb_probe_selftest_autogen/mocs_compilation.cpp.o
 .PHONY : carplay_usb_probe_selftest_autogen/mocs_compilation.o
 
@@ -647,6 +773,7 @@ src/CarplayController.o: src/CarplayController.cpp.o
 # target to build an object file
 src/CarplayController.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/CarplayController.cpp.o
 .PHONY : src/CarplayController.cpp.o
 
 src/CarplayController.i: src/CarplayController.cpp.i
@@ -655,6 +782,7 @@ src/CarplayController.i: src/CarplayController.cpp.i
 # target to preprocess a source file
 src/CarplayController.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/CarplayController.cpp.i
 .PHONY : src/CarplayController.cpp.i
 
 src/CarplayController.s: src/CarplayController.cpp.s
@@ -663,6 +791,7 @@ src/CarplayController.s: src/CarplayController.cpp.s
 # target to generate assembly for a file
 src/CarplayController.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/CarplayController.cpp.s
 .PHONY : src/CarplayController.cpp.s
 
 src/CarplayProtocol.o: src/CarplayProtocol.cpp.o
@@ -671,6 +800,8 @@ src/CarplayProtocol.o: src/CarplayProtocol.cpp.o
 # target to build an object file
 src/CarplayProtocol.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/CarplayProtocol.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/src/CarplayProtocol.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/CarplayProtocol.cpp.o
 .PHONY : src/CarplayProtocol.cpp.o
 
 src/CarplayProtocol.i: src/CarplayProtocol.cpp.i
@@ -679,6 +810,8 @@ src/CarplayProtocol.i: src/CarplayProtocol.cpp.i
 # target to preprocess a source file
 src/CarplayProtocol.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/CarplayProtocol.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/src/CarplayProtocol.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/CarplayProtocol.cpp.i
 .PHONY : src/CarplayProtocol.cpp.i
 
 src/CarplayProtocol.s: src/CarplayProtocol.cpp.s
@@ -687,6 +820,8 @@ src/CarplayProtocol.s: src/CarplayProtocol.cpp.s
 # target to generate assembly for a file
 src/CarplayProtocol.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/CarplayProtocol.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/src/CarplayProtocol.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/CarplayProtocol.cpp.s
 .PHONY : src/CarplayProtocol.cpp.s
 
 src/H264Decoder.o: src/H264Decoder.cpp.o
@@ -696,6 +831,7 @@ src/H264Decoder.o: src/H264Decoder.cpp.o
 src/H264Decoder.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/H264Decoder.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_capture_selftest.dir/build.make CMakeFiles/carplay_capture_selftest.dir/src/H264Decoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/H264Decoder.cpp.o
 .PHONY : src/H264Decoder.cpp.o
 
 src/H264Decoder.i: src/H264Decoder.cpp.i
@@ -705,6 +841,7 @@ src/H264Decoder.i: src/H264Decoder.cpp.i
 src/H264Decoder.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/H264Decoder.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_capture_selftest.dir/build.make CMakeFiles/carplay_capture_selftest.dir/src/H264Decoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/H264Decoder.cpp.i
 .PHONY : src/H264Decoder.cpp.i
 
 src/H264Decoder.s: src/H264Decoder.cpp.s
@@ -714,6 +851,7 @@ src/H264Decoder.s: src/H264Decoder.cpp.s
 src/H264Decoder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/H264Decoder.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_capture_selftest.dir/build.make CMakeFiles/carplay_capture_selftest.dir/src/H264Decoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/H264Decoder.cpp.s
 .PHONY : src/H264Decoder.cpp.s
 
 src/PcmRingBuffer.o: src/PcmRingBuffer.cpp.o
@@ -722,6 +860,7 @@ src/PcmRingBuffer.o: src/PcmRingBuffer.cpp.o
 # target to build an object file
 src/PcmRingBuffer.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/PcmRingBuffer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/PcmRingBuffer.cpp.o
 .PHONY : src/PcmRingBuffer.cpp.o
 
 src/PcmRingBuffer.i: src/PcmRingBuffer.cpp.i
@@ -730,6 +869,7 @@ src/PcmRingBuffer.i: src/PcmRingBuffer.cpp.i
 # target to preprocess a source file
 src/PcmRingBuffer.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/PcmRingBuffer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/PcmRingBuffer.cpp.i
 .PHONY : src/PcmRingBuffer.cpp.i
 
 src/PcmRingBuffer.s: src/PcmRingBuffer.cpp.s
@@ -738,6 +878,7 @@ src/PcmRingBuffer.s: src/PcmRingBuffer.cpp.s
 # target to generate assembly for a file
 src/PcmRingBuffer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/PcmRingBuffer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/PcmRingBuffer.cpp.s
 .PHONY : src/PcmRingBuffer.cpp.s
 
 src/UsbDongleTransport.o: src/UsbDongleTransport.cpp.o
@@ -746,6 +887,8 @@ src/UsbDongleTransport.o: src/UsbDongleTransport.cpp.o
 # target to build an object file
 src/UsbDongleTransport.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/UsbDongleTransport.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/src/UsbDongleTransport.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/UsbDongleTransport.cpp.o
 .PHONY : src/UsbDongleTransport.cpp.o
 
 src/UsbDongleTransport.i: src/UsbDongleTransport.cpp.i
@@ -754,6 +897,8 @@ src/UsbDongleTransport.i: src/UsbDongleTransport.cpp.i
 # target to preprocess a source file
 src/UsbDongleTransport.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/UsbDongleTransport.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/src/UsbDongleTransport.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/UsbDongleTransport.cpp.i
 .PHONY : src/UsbDongleTransport.cpp.i
 
 src/UsbDongleTransport.s: src/UsbDongleTransport.cpp.s
@@ -762,6 +907,8 @@ src/UsbDongleTransport.s: src/UsbDongleTransport.cpp.s
 # target to generate assembly for a file
 src/UsbDongleTransport.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appQtCarplay.dir/build.make CMakeFiles/appQtCarplay.dir/src/UsbDongleTransport.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/src/UsbDongleTransport.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/src/UsbDongleTransport.cpp.s
 .PHONY : src/UsbDongleTransport.cpp.s
 
 tools/capture_selftest.o: tools/capture_selftest.cpp.o
@@ -787,6 +934,54 @@ tools/capture_selftest.s: tools/capture_selftest.cpp.s
 tools/capture_selftest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_capture_selftest.dir/build.make CMakeFiles/carplay_capture_selftest.dir/tools/capture_selftest.cpp.s
 .PHONY : tools/capture_selftest.cpp.s
+
+tools/controller_probe.o: tools/controller_probe.cpp.o
+.PHONY : tools/controller_probe.o
+
+# target to build an object file
+tools/controller_probe.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/tools/controller_probe.cpp.o
+.PHONY : tools/controller_probe.cpp.o
+
+tools/controller_probe.i: tools/controller_probe.cpp.i
+.PHONY : tools/controller_probe.i
+
+# target to preprocess a source file
+tools/controller_probe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/tools/controller_probe.cpp.i
+.PHONY : tools/controller_probe.cpp.i
+
+tools/controller_probe.s: tools/controller_probe.cpp.s
+.PHONY : tools/controller_probe.s
+
+# target to generate assembly for a file
+tools/controller_probe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_controller_probe.dir/build.make CMakeFiles/carplay_controller_probe.dir/tools/controller_probe.cpp.s
+.PHONY : tools/controller_probe.cpp.s
+
+tools/session_probe.o: tools/session_probe.cpp.o
+.PHONY : tools/session_probe.o
+
+# target to build an object file
+tools/session_probe.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/tools/session_probe.cpp.o
+.PHONY : tools/session_probe.cpp.o
+
+tools/session_probe.i: tools/session_probe.cpp.i
+.PHONY : tools/session_probe.i
+
+# target to preprocess a source file
+tools/session_probe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/tools/session_probe.cpp.i
+.PHONY : tools/session_probe.cpp.i
+
+tools/session_probe.s: tools/session_probe.cpp.s
+.PHONY : tools/session_probe.s
+
+# target to generate assembly for a file
+tools/session_probe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/carplay_session_probe.dir/build.make CMakeFiles/carplay_session_probe.dir/tools/session_probe.cpp.s
+.PHONY : tools/session_probe.cpp.s
 
 tools/usb_probe_selftest.o: tools/usb_probe_selftest.cpp.o
 .PHONY : tools/usb_probe_selftest.o
@@ -840,6 +1035,10 @@ help:
 	@echo "... appQtCarplay_qmltyperegistration"
 	@echo "... carplay_capture_selftest_autogen"
 	@echo "... carplay_capture_selftest_autogen_timestamp_deps"
+	@echo "... carplay_controller_probe_autogen"
+	@echo "... carplay_controller_probe_autogen_timestamp_deps"
+	@echo "... carplay_session_probe_autogen"
+	@echo "... carplay_session_probe_autogen_timestamp_deps"
 	@echo "... carplay_usb_probe_selftest_autogen"
 	@echo "... carplay_usb_probe_selftest_autogen_timestamp_deps"
 	@echo "... clean_qml_context_properties"
@@ -847,6 +1046,8 @@ help:
 	@echo "... generate_qmlls_build_ini_file"
 	@echo "... appQtCarplay"
 	@echo "... carplay_capture_selftest"
+	@echo "... carplay_controller_probe"
+	@echo "... carplay_session_probe"
 	@echo "... carplay_usb_probe_selftest"
 	@echo "... appQtCarplay_autogen/mocs_compilation.o"
 	@echo "... appQtCarplay_autogen/mocs_compilation.i"
@@ -863,6 +1064,12 @@ help:
 	@echo "... carplay_capture_selftest_autogen/mocs_compilation.o"
 	@echo "... carplay_capture_selftest_autogen/mocs_compilation.i"
 	@echo "... carplay_capture_selftest_autogen/mocs_compilation.s"
+	@echo "... carplay_controller_probe_autogen/mocs_compilation.o"
+	@echo "... carplay_controller_probe_autogen/mocs_compilation.i"
+	@echo "... carplay_controller_probe_autogen/mocs_compilation.s"
+	@echo "... carplay_session_probe_autogen/mocs_compilation.o"
+	@echo "... carplay_session_probe_autogen/mocs_compilation.i"
+	@echo "... carplay_session_probe_autogen/mocs_compilation.s"
 	@echo "... carplay_usb_probe_selftest_autogen/mocs_compilation.o"
 	@echo "... carplay_usb_probe_selftest_autogen/mocs_compilation.i"
 	@echo "... carplay_usb_probe_selftest_autogen/mocs_compilation.s"
@@ -887,6 +1094,12 @@ help:
 	@echo "... tools/capture_selftest.o"
 	@echo "... tools/capture_selftest.i"
 	@echo "... tools/capture_selftest.s"
+	@echo "... tools/controller_probe.o"
+	@echo "... tools/controller_probe.i"
+	@echo "... tools/controller_probe.s"
+	@echo "... tools/session_probe.o"
+	@echo "... tools/session_probe.i"
+	@echo "... tools/session_probe.s"
 	@echo "... tools/usb_probe_selftest.o"
 	@echo "... tools/usb_probe_selftest.i"
 	@echo "... tools/usb_probe_selftest.s"

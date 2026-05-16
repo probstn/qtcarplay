@@ -13,6 +13,8 @@
 /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/appQtCarplay_copy_res.dir
 /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_capture_selftest.dir
 /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_usb_probe_selftest.dir
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_session_probe.dir
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_controller_probe.dir
 /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/generate_qmlls_build_ini_file.dir
 /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/all_aotstats.dir
 /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/appQtCarplay_qmlimportscan.dir
@@ -28,3 +30,7 @@
 /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_capture_selftest_autogen.dir
 /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_usb_probe_selftest_autogen_timestamp_deps.dir
 /Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_usb_probe_selftest_autogen.dir
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_session_probe_autogen_timestamp_deps.dir
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_session_probe_autogen.dir
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_controller_probe_autogen_timestamp_deps.dir
+/Users/niklasprobst/Desktop/QtCarplay/build/Qt_6_11_0_for_macOS-Debug/CMakeFiles/carplay_controller_probe_autogen.dir

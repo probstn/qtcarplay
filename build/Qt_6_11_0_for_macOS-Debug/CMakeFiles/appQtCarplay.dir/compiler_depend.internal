@@ -4950,6 +4950,7 @@ CMakeFiles/appQtCarplay.dir/main.cpp.o
  /Users/niklasprobst/Desktop/QtCarplay/src/CarplayProtocol.h
  /Users/niklasprobst/Qt/6.11.0/macos/include/QtQmlIntegration/qqmlintegration.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QByteArray
+ /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QElapsedTimer
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QHash
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QIODevice
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QJsonObject
@@ -5006,6 +5007,7 @@ CMakeFiles/appQtCarplay.dir/main.cpp.o
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qdatetime.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qdeadlinetimer.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qdebug.h
+ /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qendian.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qeventloop.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qexceptionhandling.h
@@ -6080,6 +6082,7 @@ CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QQueue
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QString
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QThread
+ /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QTimer
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/q17memory.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/q20bit.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/q20functional.h
@@ -6221,6 +6224,7 @@ CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtextstream.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtformat_impl.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qthread.h
+ /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtimer.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtimezone.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtmetamacros.h
  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtnoop.h

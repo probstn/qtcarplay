@@ -5,6 +5,7 @@
 #include <QAudioFormat>
 #include <QAudioSink>
 #include <QAudioSource>
+#include <QElapsedTimer>
 #include <QHash>
 #include <QIODevice>
 #include <QObject>
@@ -23,6 +24,7 @@
 #include <vector>
 
 class PcmRingBuffer;
+class QTimer;
 class UsbDongleTransport;
 
 class CarplayController : public QObject
@@ -97,9 +99,12 @@ private:
     void presentFrame(const QVideoFrame &frame);
     void captureLoop(QString captureDirectory, int fps);
     void handleTransportMessage(CarplayProtocol::Header header, const QByteArray &payload);
+    void handlePluggedPacket(const CarplayProtocol::PluggedPacket &packet);
     void handleVideoPacket(const CarplayProtocol::VideoPacket &packet);
     void handleAudioPacket(const CarplayProtocol::AudioPacket &packet);
     void handleDongleCommand(int command);
+    void startFrameRequests();
+    void stopFrameRequests();
     void writeAudio(int decodeType, int audioType, float volume, const QByteArray &pcm);
     void stopAudio();
     void startMicrophone();
@@ -107,6 +112,10 @@ private:
     void sendMicrophoneData(const QByteArray &pcm);
     void sendTouch(double x, double y, CarplayProtocol::TouchAction action);
     void scheduleFramePresentation(const QVideoFrame &frame);
+    void startWatchdog();
+    void stopWatchdog();
+    void watchdogTick();
+    void restartStream(const QString &reason);
 
     mutable std::mutex m_stateMutex;
     QString m_status = "Idle";
@@ -142,4 +151,11 @@ private:
     std::thread m_captureThread;
 
     UsbDongleTransport *m_transport = nullptr;
+    QTimer *m_frameRequestTimer = nullptr;
+    QTimer *m_watchdogTimer = nullptr;
+    CarplayProtocol::DongleConfig m_lastConfig;
+    QElapsedTimer m_streamTimer;
+    int m_lastWatchdogFrameCount = 0;
+    int m_stalledWatchdogTicks = 0;
+    bool m_restartPending = false;
 };

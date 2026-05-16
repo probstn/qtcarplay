@@ -11,23 +11,39 @@ Window {
     visible: true
     color: "#05070a"
     title: qsTr("Qt CarPlay")
+    property bool autoConnect: true
 
     CarplayController {
         id: carplay
         videoSink: videoOutput.videoSink
     }
 
+    Component.onCompleted: {
+        carplay.startStream(root.width, root.height, 60)
+    }
+
+    Timer {
+        interval: 3000
+        repeat: true
+        running: root.autoConnect
+        triggeredOnStart: false
+        onTriggered: {
+            if (!carplay.streaming)
+                carplay.startStream(root.width, root.height, 60)
+        }
+    }
+
     VideoOutput {
         id: videoOutput
         anchors.fill: parent
         fillMode: VideoOutput.PreserveAspectFit
-        visible: carplay.receivingVideo
+        visible: carplay.frameCount > 0
     }
 
     MouseArea {
         id: touchSurface
         anchors.fill: videoOutput
-        enabled: carplay.streaming && carplay.receivingVideo
+        enabled: carplay.streaming && carplay.frameCount > 0
         preventStealing: true
         acceptedButtons: Qt.LeftButton
 
@@ -66,7 +82,7 @@ Window {
     Rectangle {
         anchors.fill: parent
         color: "#05070a"
-        visible: !carplay.receivingVideo
+        visible: carplay.frameCount <= 0
 
         ColumnLayout {
             anchors.centerIn: parent
@@ -101,9 +117,12 @@ Window {
                 }
 
                 Button {
-                    text: "Start Live"
+                    text: "Reconnect"
                     enabled: !carplay.streaming
-                    onClicked: carplay.startStream(root.width, root.height, 120)
+                    onClicked: {
+                        root.autoConnect = true
+                        carplay.startStream(root.width, root.height, 60)
+                    }
                 }
 
                 Button {
@@ -115,7 +134,10 @@ Window {
                 Button {
                     text: "Stop"
                     enabled: carplay.streaming
-                    onClicked: carplay.stop()
+                    onClicked: {
+                        root.autoConnect = false
+                        carplay.stop()
+                    }
                 }
             }
         }
@@ -170,6 +192,9 @@ Window {
 
     Shortcut {
         sequence: "Esc"
-        onActivated: carplay.stop()
+        onActivated: {
+            root.autoConnect = false
+            carplay.stop()
+        }
     }
 }

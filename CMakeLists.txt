@@ -110,3 +110,61 @@ target_link_libraries(carplay_usb_probe_selftest
     PRIVATE
         ${LIBUSB_LIBRARIES}
 )
+
+add_executable(carplay_session_probe
+    tools/session_probe.cpp
+    src/CarplayProtocol.cpp
+    src/CarplayProtocol.h
+    src/UsbDongleTransport.cpp
+    src/UsbDongleTransport.h
+)
+
+target_include_directories(carplay_session_probe
+    PRIVATE
+        ${LIBUSB_INCLUDE_DIRS}
+)
+
+target_link_directories(carplay_session_probe
+    PRIVATE
+        ${LIBUSB_LIBRARY_DIRS}
+)
+
+target_link_libraries(carplay_session_probe
+    PRIVATE
+        Qt6::Core
+        ${LIBUSB_LIBRARIES}
+)
+
+add_executable(carplay_controller_probe
+    tools/controller_probe.cpp
+    src/CarplayController.cpp
+    src/CarplayController.h
+    src/CarplayProtocol.cpp
+    src/CarplayProtocol.h
+    src/H264Decoder.cpp
+    src/H264Decoder.h
+    src/PcmRingBuffer.cpp
+    src/PcmRingBuffer.h
+    src/UsbDongleTransport.cpp
+    src/UsbDongleTransport.h
+)
+
+target_include_directories(carplay_controller_probe
+    PRIVATE
+        ${LIBUSB_INCLUDE_DIRS}
+        ${FFMPEG_INCLUDE_DIRS}
+)
+
+target_link_directories(carplay_controller_probe
+    PRIVATE
+        ${LIBUSB_LIBRARY_DIRS}
+        ${FFMPEG_LIBRARY_DIRS}
+)
+
+target_link_libraries(carplay_controller_probe
+    PRIVATE
+        Qt6::Core
+        Qt6::Multimedia
+        ${LIBUSB_LIBRARIES}
+        ${FFMPEG_LIBRARIES}
+)

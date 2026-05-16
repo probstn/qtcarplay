@@ -4,13 +4,21 @@
 
 #include <QDeadlineTimer>
 
+#include <array>
 #include <chrono>
 #include <stdexcept>
 
 namespace {
 
 constexpr int ResetWaitMs = 3000;
+constexpr int ResetProbeIntervalMs = 250;
+constexpr int ResetProbeAttempts = 24;
+constexpr int PairTimeoutMs = 15000;
 constexpr qsizetype MaxPayloadSize = 1024 * 1024;
+constexpr std::array<quint16, 2> ProductIds = {
+    CarplayProtocol::ProductIdCpc200Ccpa,
+    CarplayProtocol::ProductIdCpc200Ccpm,
+};
 
 QString usbError(int code)
 {
@@ -97,8 +105,7 @@ void UsbDongleTransport::initializeUsb()
     emit statusChanged(QStringLiteral("Opening CarPlay USB dongle"));
 
     requireUsb(libusb_init(&m_context), QStringLiteral("libusb_init"));
-    m_handle = libusb_open_device_with_vid_pid(m_context, CarplayProtocol::VendorId, CarplayProtocol::ProductId);
-    if (!m_handle)
+    if (!openKnownDevice())
         throw std::runtime_error("CarPlay dongle not found");
 
     emit statusChanged(QStringLiteral("Resetting dongle"));
@@ -106,11 +113,18 @@ void UsbDongleTransport::initializeUsb()
     libusb_close(m_handle);
     m_handle = nullptr;
 
-    msleep(ResetWaitMs);
-
-    m_handle = libusb_open_device_with_vid_pid(m_context, CarplayProtocol::VendorId, CarplayProtocol::ProductId);
+    for (int attempt = 0; attempt < ResetProbeAttempts && !m_stopping; ++attempt) {
+        msleep(attempt == 0 ? ResetWaitMs : ResetProbeIntervalMs);
+        if (openKnownDevice())
+            break;
+    }
     if (!m_handle)
         throw std::runtime_error("CarPlay dongle did not reappear after reset");
+
+    const int configurationResult = libusb_set_configuration(m_handle, 1);
+    if (configurationResult != LIBUSB_SUCCESS && configurationResult != LIBUSB_ERROR_BUSY) {
+        emit statusChanged(QString("USB configuration warning: %1").arg(usbError(configurationResult)));
+    }
 
     if (libusb_kernel_driver_active(m_handle, 0) == 1)
         libusb_detach_kernel_driver(m_handle, 0);
@@ -121,6 +135,19 @@ void UsbDongleTransport::initializeUsb()
     emit statusChanged(QString("USB ready: IN 0x%1 OUT 0x%2")
                            .arg(m_endpointIn, 2, 16, QLatin1Char('0'))
                            .arg(m_endpointOut, 2, 16, QLatin1Char('0')));
+}
+
+bool UsbDongleTransport::openKnownDevice()
+{
+    for (const quint16 productId : ProductIds) {
+        m_handle = libusb_open_device_with_vid_pid(m_context, CarplayProtocol::VendorId, productId);
+        if (m_handle) {
+            emit statusChanged(QString("Found CarPlay dongle PID 0x%1")
+                                   .arg(productId, 4, 16, QLatin1Char('0')));
+            return true;
+        }
+    }
+    return false;
 }
 
 void UsbDongleTransport::closeUsb()
@@ -197,6 +224,29 @@ bool UsbDongleTransport::readExact(char *data, qsizetype size, unsigned int time
     return offset == size;
 }
 
+bool UsbDongleTransport::readNextHeader(CarplayProtocol::Header &header)
+{
+    QByteArray window(CarplayProtocol::HeaderSize, Qt::Uninitialized);
+    if (!readExact(window.data(), window.size(), 50))
+        return false;
+
+    while (!m_stopping) {
+        const auto parsed = CarplayProtocol::parseHeader(window);
+        if (parsed) {
+            header = *parsed;
+            return true;
+        }
+
+        window.remove(0, 1);
+        char next = 0;
+        if (!readExact(&next, 1, 50))
+            return false;
+        window.append(next);
+    }
+
+    return false;
+}
+
 void UsbDongleTransport::sendStartup()
 {
     emit statusChanged(QStringLiteral("Configuring dongle"));
@@ -210,36 +260,43 @@ void UsbDongleTransport::sendStartup()
 
 void UsbDongleTransport::pollLoop()
 {
-    QByteArray headerBytes(CarplayProtocol::HeaderSize, Qt::Uninitialized);
     QByteArray payload;
     payload.reserve(256 * 1024);
 
     QElapsedTimer timer;
     timer.start();
+    const qint64 startMs = timer.elapsed();
     qint64 lastHeartbeatMs = timer.elapsed();
     int consecutiveErrors = 0;
+    bool phoneSeen = false;
+    bool pairSent = false;
 
     while (!m_stopping) {
         try {
             sendHeartbeatIfDue(timer, lastHeartbeatMs);
+            sendPairIfDue(timer, startMs, phoneSeen, pairSent);
 
-            if (!readExact(headerBytes.data(), headerBytes.size(), 20))
+            CarplayProtocol::Header header;
+            if (!readNextHeader(header))
                 continue;
 
-            const auto header = CarplayProtocol::parseHeader(headerBytes);
-            if (!header) {
-                ++consecutiveErrors;
-                continue;
-            }
-            if (header->length > MaxPayloadSize)
+            if (header.length > MaxPayloadSize)
                 throw std::runtime_error("USB payload exceeds maximum size");
 
-            payload.resize(static_cast<qsizetype>(header->length));
-            if (header->length > 0 && !readExact(payload.data(), payload.size(), 200))
-                continue;
+            payload.resize(static_cast<qsizetype>(header.length));
+            if (header.length > 0 && !readExact(payload.data(), payload.size(), 1000))
+                throw std::runtime_error("Timed out waiting for USB payload");
 
             consecutiveErrors = 0;
-            emit messageReceived(*header, payload);
+            if (header.type == CarplayProtocol::MessageType::Plugged
+                || header.type == CarplayProtocol::MessageType::VideoData
+                || header.type == CarplayProtocol::MessageType::AudioData) {
+                phoneSeen = true;
+            } else if (header.type == CarplayProtocol::MessageType::Unplugged) {
+                phoneSeen = false;
+                pairSent = false;
+            }
+            emit messageReceived(header, payload);
         } catch (const std::exception &error) {
             emit statusChanged(QString("USB read warning: %1").arg(error.what()));
             if (++consecutiveErrors >= 10)
@@ -256,4 +313,18 @@ void UsbDongleTransport::sendHeartbeatIfDue(QElapsedTimer &timer, qint64 &lastHe
 
     sendMessage(CarplayProtocol::makeHeartbeat());
     lastHeartbeatMs = now;
+}
+
+void UsbDongleTransport::sendPairIfDue(QElapsedTimer &timer, qint64 startMs, bool phoneSeen, bool &pairSent)
+{
+    if (pairSent || phoneSeen)
+        return;
+
+    if (timer.elapsed() - startMs < PairTimeoutMs)
+        return;
+
+    emit statusChanged(QStringLiteral("No phone session yet; requesting wireless pair/connect"));
+    sendMessage(CarplayProtocol::makeCommand(CarplayProtocol::Command::WifiPair));
+    sendMessage(CarplayProtocol::makeCommand(CarplayProtocol::Command::WifiConnect));
+    pairSent = true;
 }

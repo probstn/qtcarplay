@@ -4944,6 +4944,7 @@ CMakeFiles/appQtCarplay.dir/main.cpp.o: /Users/niklasprobst/Desktop/QtCarplay/ma
   /Users/niklasprobst/Desktop/QtCarplay/src/CarplayProtocol.h \
   /Users/niklasprobst/Qt/6.11.0/macos/include/QtQmlIntegration/qqmlintegration.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QByteArray \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QElapsedTimer \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QHash \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QIODevice \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QJsonObject \
@@ -5000,6 +5001,7 @@ CMakeFiles/appQtCarplay.dir/main.cpp.o: /Users/niklasprobst/Desktop/QtCarplay/ma
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qdeadlinetimer.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qendian.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qeventloop.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qexceptionhandling.h \
@@ -6073,6 +6075,7 @@ CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o: /Users/niklasprobst/Des
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QQueue \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QString \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QThread \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QTimer \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/q17memory.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/q20bit.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/q20functional.h \
@@ -6214,6 +6217,7 @@ CMakeFiles/appQtCarplay.dir/src/CarplayController.cpp.o: /Users/niklasprobst/Des
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtextstream.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtformat_impl.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qthread.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtimer.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtimezone.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtmetamacros.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtnoop.h \
@@ -10249,9 +10253,7 @@ CMakeFiles/appQtCarplay.dir/src/UsbDongleTransport.cpp.o: /Users/niklasprobst/De
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/sys/_types/_timeval64.h:
 
-/Users/niklasprobst/Qt/6.11.0/macos/lib/cmake/Qt6Network/Qt6NetworkVersionlessAliasTargets.cmake:
-
-/opt/homebrew/Cellar/ffmpeg/7.1.1_3/include/libavutil/imgutils.h:
+/opt/homebrew/Cellar/ffmpeg/7.1.1_3/include/libavutil/pixdesc.h:
 
 /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QJsonDocument:
 
@@ -12303,6 +12305,8 @@ appQtCarplay_autogen/UVLADIE3JM/moc_PcmRingBuffer.cpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/c++/v1/__ranges/view_interface.h:
 
+/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QTimer:
+
 /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/qassert.h:
 
 /Users/niklasprobst/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/FindOpenGL.cmake:
@@ -12462,8 +12466,6 @@ appQtCarplay_autogen/UVLADIE3JM/moc_PcmRingBuffer.cpp:
 /Users/niklasprobst/Qt/6.11.0/macos/lib/cmake/Qt6Qml/QmlPlugins/Qt6workerscriptpluginTargets-relwithdebinfo.cmake:
 
 /Users/niklasprobst/Qt/6.11.0/macos/lib/cmake/Qt6Qml/QmlPlugins/Qt6workerscriptpluginConfig.cmake:
-
-/opt/homebrew/Cellar/ffmpeg/7.1.1_3/include/libavutil/pixdesc.h:
 
 /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qcoreevent.h:
 
@@ -13257,6 +13259,8 @@ CMakeFiles/3.30.5/CMakeSystem.cmake:
 
 /Users/niklasprobst/Qt/6.11.0/macos/lib/cmake/Qt6Gui/Qt6GuiPlugins.cmake:
 
+/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtimer.h:
+
 /Users/niklasprobst/Qt/6.11.0/macos/lib/cmake/Qt6Qml/QmlPlugins/Qt6labsanimationpluginConfig.cmake:
 
 /Users/niklasprobst/Qt/6.11.0/macos/lib/cmake/Qt6Qml/QmlPlugins/Qt6labsanimationpluginAdditionalTargetInfo.cmake:
@@ -13542,6 +13546,10 @@ CMakeFiles/3.30.5/CMakeSystem.cmake:
 /Users/niklasprobst/Qt/6.11.0/macos/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake:
 
 /Users/niklasprobst/Qt/6.11.0/macos/lib/cmake/Qt6Network/Qt6QAppleNetworkInformationPluginConfig.cmake:
+
+/opt/homebrew/Cellar/ffmpeg/7.1.1_3/include/libavutil/imgutils.h:
+
+/Users/niklasprobst/Qt/6.11.0/macos/lib/cmake/Qt6Network/Qt6NetworkVersionlessAliasTargets.cmake:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/c++/v1/__algorithm/sort.h:
 

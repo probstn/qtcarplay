@@ -11,6 +11,7 @@
 #include <QFileInfoList>
 #include <QMediaDevices>
 #include <QMetaObject>
+#include <QTimer>
 #include <QVideoFrame>
 
 #include <algorithm>
@@ -19,6 +20,28 @@
 #include <iterator>
 
 namespace {
+
+constexpr int WatchdogIntervalMs = 5000;
+constexpr int NoVideoRestartMs = 45000;
+constexpr int StalledFrameRestartTicks = 4;
+
+QString phoneTypeName(int phoneType)
+{
+    switch (phoneType) {
+    case 1:
+        return QStringLiteral("Android Mirror");
+    case 3:
+        return QStringLiteral("CarPlay");
+    case 4:
+        return QStringLiteral("iPhone Mirror");
+    case 5:
+        return QStringLiteral("Android Auto");
+    case 6:
+        return QStringLiteral("HiCar");
+    default:
+        return QString("phone type %1").arg(phoneType);
+    }
+}
 
 QAudioFormat audioFormatForDecodeType(int decodeType)
 {
@@ -67,6 +90,17 @@ CarplayController::CarplayController(QObject *parent)
 {
     qRegisterMetaType<QVideoFrame>();
     qRegisterMetaType<CarplayProtocol::Header>();
+
+    m_frameRequestTimer = new QTimer(this);
+    m_frameRequestTimer->setInterval(5000);
+    connect(m_frameRequestTimer, &QTimer::timeout, this, [this]() {
+        if (m_transport && streaming())
+            m_transport->sendMessage(CarplayProtocol::makeCommand(CarplayProtocol::Command::Frame));
+    });
+
+    m_watchdogTimer = new QTimer(this);
+    m_watchdogTimer->setInterval(WatchdogIntervalMs);
+    connect(m_watchdogTimer, &QTimer::timeout, this, &CarplayController::watchdogTick);
 }
 
 CarplayController::~CarplayController()
@@ -165,6 +199,11 @@ void CarplayController::startStream(int width, int height, int fps)
     config.packetMax = 49152;
     config.boxName = QStringLiteral("QtCarplay");
     config.audioTransferMode = false;
+    m_lastConfig = config;
+    m_streamTimer.restart();
+    m_lastWatchdogFrameCount = 0;
+    m_stalledWatchdogTicks = 0;
+    m_restartPending = false;
 
     startDecoder(config.fps);
 
@@ -178,10 +217,15 @@ void CarplayController::startStream(int width, int height, int fps)
         setDongleReady(false);
         stopDecoder();
     });
+    connect(m_transport, &QThread::finished, this, [this, transport = m_transport]() {
+        if (m_transport == transport)
+            m_transport = nullptr;
+    });
     connect(m_transport, &QThread::finished, m_transport, &QObject::deleteLater);
 
     setStreaming(true);
     setStatus(QStringLiteral("Starting CarPlay transport"));
+    startWatchdog();
     m_transport->startTransport(config);
 }
 
@@ -199,6 +243,9 @@ void CarplayController::stop()
 
     stopDecoder();
     stopAudio();
+    stopFrameRequests();
+    stopWatchdog();
+    m_restartPending = false;
     setStreaming(false);
     setReceivingVideo(false);
 }
@@ -474,9 +521,11 @@ void CarplayController::handleTransportMessage(CarplayProtocol::Header header, c
     try {
         switch (header.type) {
         case CarplayProtocol::MessageType::Plugged:
-            setStatus(QStringLiteral("Phone connected"));
+            handlePluggedPacket(CarplayProtocol::parsePluggedPacket(payload));
             break;
         case CarplayProtocol::MessageType::Unplugged:
+            stopFrameRequests();
+            setReceivingVideo(false);
             setStatus(QStringLiteral("Phone disconnected"));
             break;
         case CarplayProtocol::MessageType::VideoData:
@@ -496,8 +545,23 @@ void CarplayController::handleTransportMessage(CarplayProtocol::Header header, c
     }
 }
 
+void CarplayController::handlePluggedPacket(const CarplayProtocol::PluggedPacket &packet)
+{
+    const QString phoneName = phoneTypeName(packet.phoneType);
+    if (packet.wifi.has_value()) {
+        setStatus(QString("%1 connected, wifi %2")
+                      .arg(phoneName)
+                      .arg(packet.wifi.value() ? QStringLiteral("available") : QStringLiteral("unavailable")));
+    } else {
+        setStatus(QString("%1 connected").arg(phoneName));
+    }
+
+    startFrameRequests();
+}
+
 void CarplayController::handleVideoPacket(const CarplayProtocol::VideoPacket &packet)
 {
+    startFrameRequests();
     std::vector<uint8_t> bytes(static_cast<size_t>(packet.h264.size()));
     std::copy(packet.h264.begin(), packet.h264.end(), bytes.begin());
     enqueueEncodedFrame(std::move(bytes), packet.width, packet.height);
@@ -537,6 +601,109 @@ void CarplayController::handleDongleCommand(int command)
     default:
         break;
     }
+}
+
+void CarplayController::startFrameRequests()
+{
+    if (m_frameRequestTimer && m_frameRequestTimer->isActive())
+        return;
+
+    if (m_transport && streaming())
+        m_transport->sendMessage(CarplayProtocol::makeCommand(CarplayProtocol::Command::Frame));
+    if (m_frameRequestTimer)
+        m_frameRequestTimer->start();
+}
+
+void CarplayController::startWatchdog()
+{
+    if (m_watchdogTimer && !m_watchdogTimer->isActive())
+        m_watchdogTimer->start();
+}
+
+void CarplayController::stopWatchdog()
+{
+    if (m_watchdogTimer)
+        m_watchdogTimer->stop();
+}
+
+void CarplayController::watchdogTick()
+{
+    if (!streaming() || m_restartPending)
+        return;
+
+    const int frames = frameCount();
+    const bool hasVideo = receivingVideo();
+
+    if (!hasVideo && m_streamTimer.isValid() && m_streamTimer.elapsed() > NoVideoRestartMs) {
+        restartStream(QStringLiteral("No video after connection timeout"));
+        return;
+    }
+
+    if (!hasVideo) {
+        m_stalledWatchdogTicks = 0;
+        return;
+    }
+
+    if (frames > m_lastWatchdogFrameCount) {
+        m_lastWatchdogFrameCount = frames;
+        m_stalledWatchdogTicks = 0;
+        return;
+    }
+
+    if (frames == 0)
+        return;
+
+    if (++m_stalledWatchdogTicks >= StalledFrameRestartTicks)
+        restartStream(QStringLiteral("Video stalled; reconnecting"));
+}
+
+void CarplayController::restartStream(const QString &reason)
+{
+    if (m_restartPending)
+        return;
+
+    m_restartPending = true;
+    const CarplayProtocol::DongleConfig config = m_lastConfig;
+    setStatus(reason);
+
+    QTimer::singleShot(0, this, [this, config]() {
+        stop();
+        resetStats();
+        m_lastConfig = config;
+        m_streamTimer.restart();
+        m_lastWatchdogFrameCount = 0;
+        m_stalledWatchdogTicks = 0;
+        m_restartPending = false;
+
+        startDecoder(config.fps);
+
+        m_transport = new UsbDongleTransport(this);
+        connect(m_transport, &UsbDongleTransport::statusChanged, this, &CarplayController::setStatus);
+        connect(m_transport, &UsbDongleTransport::dongleReadyChanged, this, &CarplayController::setDongleReady);
+        connect(m_transport, &UsbDongleTransport::messageReceived, this, &CarplayController::handleTransportMessage);
+        connect(m_transport, &UsbDongleTransport::transportFailed, this, [this](const QString &failureReason) {
+            setStatus(QStringLiteral("USB transport failed: ") + failureReason);
+            setStreaming(false);
+            setDongleReady(false);
+            stopDecoder();
+        });
+        connect(m_transport, &QThread::finished, this, [this, transport = m_transport]() {
+            if (m_transport == transport)
+                m_transport = nullptr;
+        });
+        connect(m_transport, &QThread::finished, m_transport, &QObject::deleteLater);
+
+        setStreaming(true);
+        setStatus(QStringLiteral("Restarting CarPlay transport"));
+        startWatchdog();
+        m_transport->startTransport(config);
+    });
+}
+
+void CarplayController::stopFrameRequests()
+{
+    if (m_frameRequestTimer)
+        m_frameRequestTimer->stop();
 }
 
 void CarplayController::writeAudio(int decodeType, int audioType, float volume, const QByteArray &pcm)
