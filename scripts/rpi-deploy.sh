@@ -34,6 +34,7 @@ export QT_QPA_FONTDIR="\${QT_QPA_FONTDIR:-/usr/share/fonts/truetype/dejavu}"
 export QTCARPLAY_AUDIO_OUTPUT_ID="\${QTCARPLAY_AUDIO_OUTPUT_ID:-plughw:CARD=vc4hdmi0,DEV=0}"
 export QT_QPA_PLATFORM="\${QT_QPA_PLATFORM:-eglfs}"
 export QT_QPA_EGLFS_INTEGRATION="\${QT_QPA_EGLFS_INTEGRATION:-eglfs_kms}"
+export QT_QPA_EGLFS_HIDECURSOR="\${QT_QPA_EGLFS_HIDECURSOR:-1}"
 
 exec "${RPI_APP_PREFIX}/bin/appQtCarplay" "\$@"
 REMOTE

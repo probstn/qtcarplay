@@ -8,6 +8,10 @@
 #include <QThread>
 
 #include <atomic>
+#include <condition_variable>
+#include <deque>
+#include <mutex>
+#include <thread>
 
 struct libusb_context;
 struct libusb_device_handle;
@@ -44,6 +48,10 @@ private:
     void pollLoop();
     void sendHeartbeatIfDue(QElapsedTimer &timer, qint64 &lastHeartbeatMs);
     void sendPairIfDue(QElapsedTimer &timer, qint64 startMs, bool phoneSeen, bool &pairSent);
+    void startWriter();
+    void stopWriter();
+    void writerLoop();
+    bool writeMessageNow(const QByteArray &message, int timeoutMs);
 
     CarplayProtocol::DongleConfig m_config;
     libusb_context *m_context = nullptr;
@@ -52,4 +60,9 @@ private:
     uint8_t m_endpointOut = 0;
     QMutex m_usbMutex;
     std::atomic_bool m_stopping{false};
+    std::atomic_bool m_writerStopping{false};
+    std::mutex m_writeMutex;
+    std::condition_variable m_writeCondition;
+    std::deque<QByteArray> m_writeQueue;
+    std::thread m_writerThread;
 };

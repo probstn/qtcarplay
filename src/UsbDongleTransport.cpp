@@ -3,9 +3,11 @@
 #include <libusb.h>
 
 #include <QDeadlineTimer>
+#include <QtEndian>
 
 #include <array>
 #include <chrono>
+#include <algorithm>
 #include <stdexcept>
 
 namespace {
@@ -29,6 +31,26 @@ void requireUsb(int code, const QString &operation)
 {
     if (code != LIBUSB_SUCCESS)
         throw std::runtime_error(QString("%1 failed: %2").arg(operation, usbError(code)).toStdString());
+}
+
+quint32 readLe32(const QByteArray &data, qsizetype offset)
+{
+    if (offset < 0 || offset + 4 > data.size())
+        return 0;
+    return qFromLittleEndian<quint32>(reinterpret_cast<const uchar *>(data.constData() + offset));
+}
+
+bool isTouchMoveMessage(const QByteArray &message)
+{
+    return message.size() >= CarplayProtocol::HeaderSize + 4
+        && readLe32(message, 8) == static_cast<quint32>(CarplayProtocol::MessageType::Touch)
+        && readLe32(message, CarplayProtocol::HeaderSize) == static_cast<quint32>(CarplayProtocol::TouchAction::Move);
+}
+
+bool isTouchMessage(const QByteArray &message)
+{
+    return message.size() >= CarplayProtocol::HeaderSize
+        && readLe32(message, 8) == static_cast<quint32>(CarplayProtocol::MessageType::Touch);
 }
 
 } // namespace
@@ -56,6 +78,7 @@ void UsbDongleTransport::startTransport(const CarplayProtocol::DongleConfig &con
 void UsbDongleTransport::stopTransport()
 {
     m_stopping = true;
+    stopWriter();
     if (isRunning())
         wait(4000);
     closeUsb();
@@ -63,25 +86,28 @@ void UsbDongleTransport::stopTransport()
 
 bool UsbDongleTransport::sendMessage(const QByteArray &message)
 {
-    QMutexLocker lock(&m_usbMutex);
-    if (!m_handle || m_endpointOut == 0)
+    if (m_stopping || message.isEmpty())
         return false;
 
-    int transferred = 0;
-    const int result = libusb_bulk_transfer(m_handle,
-                                            m_endpointOut,
-                                            reinterpret_cast<unsigned char *>(const_cast<char *>(message.constData())),
-                                            static_cast<int>(message.size()),
-                                            &transferred,
-                                            100);
-    if (result != LIBUSB_SUCCESS || transferred != message.size()) {
-        emit statusChanged(QString("USB write failed: %1 (%2/%3)")
-                               .arg(usbError(result))
-                               .arg(transferred)
-                               .arg(message.size()));
-        return false;
+    {
+        std::scoped_lock lock(m_writeMutex);
+
+        if (isTouchMoveMessage(message)) {
+            m_writeQueue.erase(std::remove_if(m_writeQueue.begin(), m_writeQueue.end(), [](const QByteArray &queued) {
+                return isTouchMoveMessage(queued);
+            }), m_writeQueue.end());
+        }
+
+        if (m_writeQueue.size() > 128) {
+            m_writeQueue.erase(std::remove_if(m_writeQueue.begin(), m_writeQueue.end(), [](const QByteArray &queued) {
+                return isTouchMessage(queued);
+            }), m_writeQueue.end());
+        }
+
+        m_writeQueue.push_back(message);
     }
 
+    m_writeCondition.notify_one();
     return true;
 }
 
@@ -133,6 +159,7 @@ void UsbDongleTransport::initializeUsb()
 
     requireUsb(libusb_claim_interface(m_handle, 0), QStringLiteral("libusb_claim_interface"));
     findEndpoints();
+    startWriter();
 
     emit statusChanged(QString("USB ready: IN 0x%1 OUT 0x%2")
                            .arg(m_endpointIn, 2, 16, QLatin1Char('0'))
@@ -154,6 +181,8 @@ bool UsbDongleTransport::openKnownDevice()
 
 void UsbDongleTransport::closeUsb()
 {
+    stopWriter();
+
     QMutexLocker lock(&m_usbMutex);
     if (m_handle) {
         libusb_release_interface(m_handle, 0);
@@ -253,10 +282,10 @@ void UsbDongleTransport::sendStartup()
 {
     emit statusChanged(QStringLiteral("Configuring dongle"));
     for (const QByteArray &message : CarplayProtocol::makeStartupMessages(m_config))
-        sendMessage(message);
+        writeMessageNow(message, 100);
 
     msleep(1000);
-    sendMessage(CarplayProtocol::makeCommand(CarplayProtocol::Command::WifiConnect));
+    writeMessageNow(CarplayProtocol::makeCommand(CarplayProtocol::Command::WifiConnect), 100);
     emit statusChanged(QStringLiteral("Dongle configured; waiting for stream"));
 }
 
@@ -313,7 +342,7 @@ void UsbDongleTransport::sendHeartbeatIfDue(QElapsedTimer &timer, qint64 &lastHe
     if (now - lastHeartbeatMs < 2000)
         return;
 
-    sendMessage(CarplayProtocol::makeHeartbeat());
+    writeMessageNow(CarplayProtocol::makeHeartbeat(), 100);
     lastHeartbeatMs = now;
 }
 
@@ -326,7 +355,75 @@ void UsbDongleTransport::sendPairIfDue(QElapsedTimer &timer, qint64 startMs, boo
         return;
 
     emit statusChanged(QStringLiteral("No phone session yet; requesting wireless pair/connect"));
-    sendMessage(CarplayProtocol::makeCommand(CarplayProtocol::Command::WifiPair));
-    sendMessage(CarplayProtocol::makeCommand(CarplayProtocol::Command::WifiConnect));
+    writeMessageNow(CarplayProtocol::makeCommand(CarplayProtocol::Command::WifiPair), 100);
+    writeMessageNow(CarplayProtocol::makeCommand(CarplayProtocol::Command::WifiConnect), 100);
     pairSent = true;
+}
+
+void UsbDongleTransport::startWriter()
+{
+    stopWriter();
+
+    m_writerStopping = false;
+    {
+        std::scoped_lock lock(m_writeMutex);
+        m_writeQueue.clear();
+    }
+    m_writerThread = std::thread(&UsbDongleTransport::writerLoop, this);
+}
+
+void UsbDongleTransport::stopWriter()
+{
+    m_writerStopping = true;
+    m_writeCondition.notify_all();
+    if (m_writerThread.joinable() && m_writerThread.get_id() != std::this_thread::get_id())
+        m_writerThread.join();
+
+    std::scoped_lock lock(m_writeMutex);
+    m_writeQueue.clear();
+}
+
+void UsbDongleTransport::writerLoop()
+{
+    while (!m_writerStopping) {
+        QByteArray message;
+        {
+            std::unique_lock lock(m_writeMutex);
+            m_writeCondition.wait(lock, [this]() {
+                return m_writerStopping || !m_writeQueue.empty();
+            });
+            if (m_writerStopping)
+                break;
+
+            message = std::move(m_writeQueue.front());
+            m_writeQueue.pop_front();
+        }
+
+        const int timeoutMs = isTouchMessage(message) ? 20 : 100;
+        writeMessageNow(message, timeoutMs);
+    }
+}
+
+bool UsbDongleTransport::writeMessageNow(const QByteArray &message, int timeoutMs)
+{
+    QMutexLocker usbLock(&m_usbMutex);
+    if (!m_handle || m_endpointOut == 0)
+        return false;
+
+    int transferred = 0;
+    const int result = libusb_bulk_transfer(m_handle,
+                                            m_endpointOut,
+                                            reinterpret_cast<unsigned char *>(const_cast<char *>(message.constData())),
+                                            static_cast<int>(message.size()),
+                                            &transferred,
+                                            timeoutMs);
+    if (result != LIBUSB_SUCCESS || transferred != message.size()) {
+        emit statusChanged(QString("USB write failed: %1 (%2/%3)")
+                               .arg(usbError(result))
+                               .arg(transferred)
+                               .arg(message.size()));
+        return false;
+    }
+
+    return true;
 }
