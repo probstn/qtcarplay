@@ -970,6 +970,24 @@ CMakeFiles/appQtCarplay.dir/main.cpp.o: \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qsize.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qmargins.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qguiapplication_platform.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/QCursor \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qcursor.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qbitmap.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qpaintdevice.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qrect.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qcolor.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qrgb.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qrgba64.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qimage.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qpixelformat.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qtransform.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qpolygon.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qregion.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qspan.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/c++/v1/cassert \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/q20iterator.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qline.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtQml.framework/Headers/QQmlApplicationEngine \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtQml.framework/Headers/qqmlapplicationengine.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtQml.framework/Headers/qqmlengine.h \
@@ -999,9 +1017,6 @@ CMakeFiles/appQtCarplay.dir/main.cpp.o: \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qmetaobject.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qpointer.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qversionnumber.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qspan.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/c++/v1/cassert \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/q20iterator.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qtyperevision.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtQml.framework/Headers/qqmlregistration.h \
   /Users/niklasprobst/Qt/6.11.0/macos/include/QtQmlIntegration/qqmlintegration.h \
@@ -1048,17 +1063,6 @@ CMakeFiles/appQtCarplay.dir/main.cpp.o: \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qvideoframe.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qtvideo.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qvideoframeformat.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qimage.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qcolor.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qrgb.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qrgba64.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qpaintdevice.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qrect.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qpixelformat.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qtransform.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qpolygon.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtGui.framework/Headers/qregion.h \
-  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qline.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/QVideoSink \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtMultimedia.framework/Headers/qvideosink.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/usr/include/c++/v1/condition_variable \

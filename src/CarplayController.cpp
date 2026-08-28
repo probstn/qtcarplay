@@ -531,7 +531,7 @@ void CarplayController::captureLoop(QString captureDirectory, int fps)
         std::vector<uint8_t> bytes((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
         if (!bytes.empty()) {
             QMetaObject::invokeMethod(this, [this, bytes = std::move(bytes)]() mutable {
-                enqueueEncodedFrame(std::move(bytes), 1024, 600);
+                enqueueEncodedFrame(std::move(bytes), 1920, 1080);
             }, Qt::QueuedConnection);
         }
 

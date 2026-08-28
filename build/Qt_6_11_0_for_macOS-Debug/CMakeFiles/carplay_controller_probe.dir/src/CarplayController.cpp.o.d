@@ -1099,6 +1099,7 @@ CMakeFiles/carplay_controller_probe.dir/src/CarplayController.cpp.o: \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qeventloop.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qnativeinterface.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qcoreapplication_platform.h \
+  /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QDebug \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/QDir \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qdir.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Headers/qdirlisting.h \

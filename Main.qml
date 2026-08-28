@@ -6,8 +6,14 @@ import QtCarplay 1.0
 
 Window {
     id: root
-    width: 1024
-    height: 600
+    
+    // Configurable stream resolution and framerate
+    property int streamWidth: 1920
+    property int streamHeight: 1080
+    property int streamFps: 60
+
+    width: streamWidth
+    height: streamHeight
     visible: true
     color: "#05070a"
     title: qsTr("Qt CarPlay")
@@ -19,7 +25,7 @@ Window {
     }
 
     Component.onCompleted: {
-        carplay.startStream(root.width, root.height, 60)
+        carplay.startStream(streamWidth, streamHeight, streamFps)
     }
 
     Timer {
@@ -29,7 +35,7 @@ Window {
         triggeredOnStart: false
         onTriggered: {
             if (!carplay.streaming)
-                carplay.startStream(root.width, root.height, 60)
+                carplay.startStream(streamWidth, streamHeight, streamFps)
         }
     }
 
@@ -121,7 +127,7 @@ Window {
                     enabled: !carplay.streaming
                     onClicked: {
                         root.autoConnect = true
-                        carplay.startStream(root.width, root.height, 60)
+                        carplay.startStream(streamWidth, streamHeight, streamFps)
                     }
                 }
 

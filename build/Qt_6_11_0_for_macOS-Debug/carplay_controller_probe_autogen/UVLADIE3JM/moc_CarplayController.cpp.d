@@ -775,7 +775,7 @@
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include/limits.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include/ptrcheck.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include/stdarg.h \
-  /Users/niklasprobst/Desktop/QtCarplay/src/CarplayProtocol.h \
+  /Users/niklasprobst/Desktop/qtcarplay/src/CarplayProtocol.h \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QByteArray \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QElapsedTimer \
   /Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QHash \

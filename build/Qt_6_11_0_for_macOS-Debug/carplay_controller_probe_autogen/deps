@@ -794,6 +794,7 @@ carplay_controller_probe_autogen/timestamp: \
 	/Users/niklasprobst/Desktop/QtCarplay/src/UsbDongleTransport.cpp \
 	/Users/niklasprobst/Desktop/QtCarplay/src/UsbDongleTransport.h \
 	/Users/niklasprobst/Desktop/QtCarplay/tools/controller_probe.cpp \
+	/Users/niklasprobst/Desktop/qtcarplay/src/CarplayProtocol.h \
 	/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QByteArray \
 	/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QElapsedTimer \
 	/Users/niklasprobst/Qt/6.11.0/macos/lib/QtCore.framework/Versions/A/Headers/QHash \
